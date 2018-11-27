@@ -4,24 +4,25 @@
 #
 Name     : akonadi-mime
 Version  : 18.08.0
-Release  : 2
+Release  : 3
 URL      : https://download.kde.org/stable/applications/18.08.0/src/akonadi-mime-18.08.0.tar.xz
 Source0  : https://download.kde.org/stable/applications/18.08.0/src/akonadi-mime-18.08.0.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause GPL-2.0 LGPL-2.1
-Requires: akonadi-mime-bin
-Requires: akonadi-mime-lib
-Requires: akonadi-mime-data
-Requires: akonadi-mime-license
-Requires: akonadi-mime-locales
+Requires: akonadi-mime-bin = %{version}-%{release}
+Requires: akonadi-mime-data = %{version}-%{release}
+Requires: akonadi-mime-lib = %{version}-%{release}
+Requires: akonadi-mime-license = %{version}-%{release}
+Requires: akonadi-mime-locales = %{version}-%{release}
 BuildRequires : akonadi-dev
 BuildRequires : boost-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : extra-cmake-modules shared-mime-info
 BuildRequires : kmime-dev
 BuildRequires : libxslt-dev
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 BuildRequires : shared-mime-info
 
 %description
@@ -33,8 +34,8 @@ jobs, models and other helpers to make working with emails through Akonadi easie
 %package bin
 Summary: bin components for the akonadi-mime package.
 Group: Binaries
-Requires: akonadi-mime-data
-Requires: akonadi-mime-license
+Requires: akonadi-mime-data = %{version}-%{release}
+Requires: akonadi-mime-license = %{version}-%{release}
 
 %description bin
 bin components for the akonadi-mime package.
@@ -51,10 +52,10 @@ data components for the akonadi-mime package.
 %package dev
 Summary: dev components for the akonadi-mime package.
 Group: Development
-Requires: akonadi-mime-lib
-Requires: akonadi-mime-bin
-Requires: akonadi-mime-data
-Provides: akonadi-mime-devel
+Requires: akonadi-mime-lib = %{version}-%{release}
+Requires: akonadi-mime-bin = %{version}-%{release}
+Requires: akonadi-mime-data = %{version}-%{release}
+Provides: akonadi-mime-devel = %{version}-%{release}
 
 %description dev
 dev components for the akonadi-mime package.
@@ -63,8 +64,8 @@ dev components for the akonadi-mime package.
 %package lib
 Summary: lib components for the akonadi-mime package.
 Group: Libraries
-Requires: akonadi-mime-data
-Requires: akonadi-mime-license
+Requires: akonadi-mime-data = %{version}-%{release}
+Requires: akonadi-mime-license = %{version}-%{release}
 
 %description lib
 lib components for the akonadi-mime package.
@@ -94,20 +95,20 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535424258
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1543345235
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535424258
+export SOURCE_DATE_EPOCH=1543345235
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/akonadi-mime
-cp COPYING %{buildroot}/usr/share/doc/akonadi-mime/COPYING
-cp COPYING.BSD %{buildroot}/usr/share/doc/akonadi-mime/COPYING.BSD
-cp COPYING.LIB %{buildroot}/usr/share/doc/akonadi-mime/COPYING.LIB
+mkdir -p %{buildroot}/usr/share/package-licenses/akonadi-mime
+cp COPYING %{buildroot}/usr/share/package-licenses/akonadi-mime/COPYING
+cp COPYING.BSD %{buildroot}/usr/share/package-licenses/akonadi-mime/COPYING.BSD
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/akonadi-mime/COPYING.LIB
 pushd clr-build
 %make_install
 popd
@@ -124,7 +125,7 @@ popd
 %defattr(-,root,root,-)
 /usr/share/akonadi/plugins/serializer/akonadi_serializer_mail.desktop
 /usr/share/config.kcfg/specialmailcollections.kcfg
-/usr/share/mime/packages/x-vnd.kde.contactgroup.xml
+/usr/share/mime-packages/x-vnd.kde.contactgroup.xml
 /usr/share/xdg/akonadi-mime.categories
 
 %files dev
@@ -173,10 +174,10 @@ popd
 /usr/lib64/qt5/plugins/akonadi_serializer_mail.so
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/akonadi-mime/COPYING
-/usr/share/doc/akonadi-mime/COPYING.BSD
-/usr/share/doc/akonadi-mime/COPYING.LIB
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/akonadi-mime/COPYING
+/usr/share/package-licenses/akonadi-mime/COPYING.BSD
+/usr/share/package-licenses/akonadi-mime/COPYING.LIB
 
 %files locales -f libakonadi-kmime5.lang
 %defattr(-,root,root,-)
