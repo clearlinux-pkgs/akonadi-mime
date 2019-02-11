@@ -4,7 +4,7 @@
 #
 Name     : akonadi-mime
 Version  : 18.12.2
-Release  : 4
+Release  : 5
 URL      : https://download.kde.org/stable/applications/18.12.2/src/akonadi-mime-18.12.2.tar.xz
 Source0  : https://download.kde.org/stable/applications/18.12.2/src/akonadi-mime-18.12.2.tar.xz
 Summary  : No detailed summary available
@@ -16,12 +16,14 @@ Requires: akonadi-mime-lib = %{version}-%{release}
 Requires: akonadi-mime-license = %{version}-%{release}
 Requires: akonadi-mime-locales = %{version}-%{release}
 BuildRequires : akonadi-dev
+BuildRequires : boost-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules shared-mime-info
 BuildRequires : kmime-dev
 BuildRequires : libxslt-dev
 BuildRequires : qtbase-dev mesa-dev
+BuildRequires : shared-mime-info
 
 %description
 # Akonadi Mime #
@@ -93,7 +95,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549857432
+export SOURCE_DATE_EPOCH=1549857791
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -101,7 +103,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549857432
+export SOURCE_DATE_EPOCH=1549857791
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/akonadi-mime
 cp COPYING %{buildroot}/usr/share/package-licenses/akonadi-mime/COPYING
