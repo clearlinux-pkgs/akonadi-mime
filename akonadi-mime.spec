@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : akonadi-mime
-Version  : 19.04.0
-Release  : 8
-URL      : https://download.kde.org/stable/applications/19.04.0/src/akonadi-mime-19.04.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.0/src/akonadi-mime-19.04.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.0/src/akonadi-mime-19.04.0.tar.xz.sig
+Version  : 19.04.1
+Release  : 9
+URL      : https://download.kde.org/stable/applications/19.04.1/src/akonadi-mime-19.04.1.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.1/src/akonadi-mime-19.04.1.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.1/src/akonadi-mime-19.04.1.tar.xz.sig
 Summary  : Libraries and daemons to implement basic email handling
 Group    : Development/Tools
 License  : BSD-2-Clause GPL-2.0 LGPL-2.1
@@ -60,6 +60,7 @@ Requires: akonadi-mime-bin = %{version}-%{release}
 Requires: akonadi-mime-data = %{version}-%{release}
 Provides: akonadi-mime-devel = %{version}-%{release}
 Requires: akonadi-mime = %{version}-%{release}
+Requires: akonadi-mime = %{version}-%{release}
 
 %description dev
 dev components for the akonadi-mime package.
@@ -92,14 +93,14 @@ locales components for the akonadi-mime package.
 
 
 %prep
-%setup -q -n akonadi-mime-19.04.0
+%setup -q -n akonadi-mime-19.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1556992547
+export SOURCE_DATE_EPOCH=1557491958
 mkdir -p clr-build
 pushd clr-build
 export AR=gcc-ar
@@ -114,7 +115,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1556992547
+export SOURCE_DATE_EPOCH=1557491958
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/akonadi-mime
 cp COPYING %{buildroot}/usr/share/package-licenses/akonadi-mime/COPYING
@@ -181,7 +182,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5AkonadiMime.so.5
-/usr/lib64/libKF5AkonadiMime.so.5.11.0
+/usr/lib64/libKF5AkonadiMime.so.5.11.1
 /usr/lib64/qt5/plugins/akonadi_serializer_mail.so
 
 %files license
