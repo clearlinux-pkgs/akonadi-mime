@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : akonadi-mime
-Version  : 19.04.3
-Release  : 11
-URL      : https://download.kde.org/stable/applications/19.04.3/src/akonadi-mime-19.04.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.3/src/akonadi-mime-19.04.3.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.3/src/akonadi-mime-19.04.3.tar.xz.sig
+Version  : 19.08.0
+Release  : 12
+URL      : https://download.kde.org/stable/applications/19.08.0/src/akonadi-mime-19.08.0.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.0/src/akonadi-mime-19.08.0.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.0/src/akonadi-mime-19.08.0.tar.xz.sig
 Summary  : Libraries and daemons to implement basic email handling
 Group    : Development/Tools
 License  : BSD-2-Clause GPL-2.0 LGPL-2.1
@@ -93,16 +93,17 @@ locales components for the akonadi-mime package.
 
 
 %prep
-%setup -q -n akonadi-mime-19.04.3
+%setup -q -n akonadi-mime-19.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1562902108
+export SOURCE_DATE_EPOCH=1565918023
 mkdir -p clr-build
 pushd clr-build
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -116,7 +117,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1562902108
+export SOURCE_DATE_EPOCH=1565918023
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/akonadi-mime
 cp COPYING %{buildroot}/usr/share/package-licenses/akonadi-mime/COPYING
@@ -139,7 +140,7 @@ popd
 /usr/share/akonadi/plugins/serializer/akonadi_serializer_mail.desktop
 /usr/share/config.kcfg/specialmailcollections.kcfg
 /usr/share/mime-packages/x-vnd.kde.contactgroup.xml
-/usr/share/xdg/akonadi-mime.categories
+/usr/share/qlogging-categories5/akonadi-mime.categories
 
 %files dev
 %defattr(-,root,root,-)
@@ -183,7 +184,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5AkonadiMime.so.5
-/usr/lib64/libKF5AkonadiMime.so.5.11.3
+/usr/lib64/libKF5AkonadiMime.so.5.12.0
 /usr/lib64/qt5/plugins/akonadi_serializer_mail.so
 
 %files license
