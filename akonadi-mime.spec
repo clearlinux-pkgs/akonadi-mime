@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : akonadi-mime
-Version  : 19.08.0
-Release  : 12
-URL      : https://download.kde.org/stable/applications/19.08.0/src/akonadi-mime-19.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.0/src/akonadi-mime-19.08.0.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.0/src/akonadi-mime-19.08.0.tar.xz.sig
+Version  : 19.08.1
+Release  : 13
+URL      : https://download.kde.org/stable/applications/19.08.1/src/akonadi-mime-19.08.1.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.1/src/akonadi-mime-19.08.1.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.1/src/akonadi-mime-19.08.1.tar.xz.sig
 Summary  : Libraries and daemons to implement basic email handling
 Group    : Development/Tools
 License  : BSD-2-Clause GPL-2.0 LGPL-2.1
@@ -19,14 +19,12 @@ Requires: akonadi-mime-lib = %{version}-%{release}
 Requires: akonadi-mime-license = %{version}-%{release}
 Requires: akonadi-mime-locales = %{version}-%{release}
 BuildRequires : akonadi-dev
-BuildRequires : boost-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules shared-mime-info
 BuildRequires : kmime-dev
 BuildRequires : libxslt-dev
 BuildRequires : qtbase-dev mesa-dev
-BuildRequires : shared-mime-info
 
 %description
 # Akonadi Mime #
@@ -93,14 +91,14 @@ locales components for the akonadi-mime package.
 
 
 %prep
-%setup -q -n akonadi-mime-19.08.0
+%setup -q -n akonadi-mime-19.08.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1565918023
+export SOURCE_DATE_EPOCH=1567738872
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -117,7 +115,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1565918023
+export SOURCE_DATE_EPOCH=1567738872
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/akonadi-mime
 cp COPYING %{buildroot}/usr/share/package-licenses/akonadi-mime/COPYING
@@ -184,7 +182,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5AkonadiMime.so.5
-/usr/lib64/libKF5AkonadiMime.so.5.12.0
+/usr/lib64/libKF5AkonadiMime.so.5.12.1
 /usr/lib64/qt5/plugins/akonadi_serializer_mail.so
 
 %files license
