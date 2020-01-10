@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : akonadi-mime
-Version  : 19.12.0
-Release  : 17
-URL      : https://download.kde.org/stable/release-service/19.12.0/src/akonadi-mime-19.12.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/19.12.0/src/akonadi-mime-19.12.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/19.12.0/src/akonadi-mime-19.12.0.tar.xz.sig
+Version  : 19.12.1
+Release  : 18
+URL      : https://download.kde.org/stable/release-service/19.12.1/src/akonadi-mime-19.12.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/19.12.1/src/akonadi-mime-19.12.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/19.12.1/src/akonadi-mime-19.12.1.tar.xz.sig
 Summary  : Libraries and daemons to implement basic email handling
 Group    : Development/Tools
 License  : BSD-2-Clause GPL-2.0 LGPL-2.1
@@ -58,6 +58,7 @@ Requires: akonadi-mime-bin = %{version}-%{release}
 Requires: akonadi-mime-data = %{version}-%{release}
 Provides: akonadi-mime-devel = %{version}-%{release}
 Requires: akonadi-mime = %{version}-%{release}
+Requires: akonadi-mime = %{version}-%{release}
 
 %description dev
 dev components for the akonadi-mime package.
@@ -90,17 +91,18 @@ locales components for the akonadi-mime package.
 
 
 %prep
-%setup -q -n akonadi-mime-19.12.0
-cd %{_builddir}/akonadi-mime-19.12.0
+%setup -q -n akonadi-mime-19.12.1
+cd %{_builddir}/akonadi-mime-19.12.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576552315
+export SOURCE_DATE_EPOCH=1578673944
 mkdir -p clr-build
 pushd clr-build
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -114,12 +116,12 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1576552315
+export SOURCE_DATE_EPOCH=1578673944
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/akonadi-mime
-cp %{_builddir}/akonadi-mime-19.12.0/COPYING %{buildroot}/usr/share/package-licenses/akonadi-mime/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/akonadi-mime-19.12.0/COPYING.BSD %{buildroot}/usr/share/package-licenses/akonadi-mime/d0f83c8198fdd5464d2373015b7b64ce7cae607e
-cp %{_builddir}/akonadi-mime-19.12.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/akonadi-mime/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/akonadi-mime-19.12.1/COPYING %{buildroot}/usr/share/package-licenses/akonadi-mime/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/akonadi-mime-19.12.1/COPYING.BSD %{buildroot}/usr/share/package-licenses/akonadi-mime/d0f83c8198fdd5464d2373015b7b64ce7cae607e
+cp %{_builddir}/akonadi-mime-19.12.1/COPYING.LIB %{buildroot}/usr/share/package-licenses/akonadi-mime/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 pushd clr-build
 %make_install
 popd
@@ -181,7 +183,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5AkonadiMime.so.5
-/usr/lib64/libKF5AkonadiMime.so.5.13.0
+/usr/lib64/libKF5AkonadiMime.so.5.13.1
 /usr/lib64/qt5/plugins/akonadi_serializer_mail.so
 
 %files license
