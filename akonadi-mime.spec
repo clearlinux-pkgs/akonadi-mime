@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : akonadi-mime
-Version  : 20.04.2
-Release  : 24
-URL      : https://download.kde.org/stable/release-service/20.04.2/src/akonadi-mime-20.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.04.2/src/akonadi-mime-20.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.04.2/src/akonadi-mime-20.04.2.tar.xz.sig
+Version  : 20.08.0
+Release  : 25
+URL      : https://download.kde.org/stable/release-service/20.08.0/src/akonadi-mime-20.08.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.08.0/src/akonadi-mime-20.08.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.08.0/src/akonadi-mime-20.08.0.tar.xz.sig
 Summary  : Libraries and daemons to implement basic email handling
 Group    : Development/Tools
-License  : BSD-2-Clause GPL-2.0 LGPL-2.1
+License  : GPL-2.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
 Requires: akonadi-mime-bin = %{version}-%{release}
 Requires: akonadi-mime-data = %{version}-%{release}
 Requires: akonadi-mime-lib = %{version}-%{release}
@@ -97,15 +97,15 @@ locales components for the akonadi-mime package.
 
 
 %prep
-%setup -q -n akonadi-mime-20.04.2
-cd %{_builddir}/akonadi-mime-20.04.2
+%setup -q -n akonadi-mime-20.08.0
+cd %{_builddir}/akonadi-mime-20.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1591908846
+export SOURCE_DATE_EPOCH=1597731830
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -117,16 +117,20 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}  VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1591908846
+export SOURCE_DATE_EPOCH=1597731830
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/akonadi-mime
-cp %{_builddir}/akonadi-mime-20.04.2/COPYING %{buildroot}/usr/share/package-licenses/akonadi-mime/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/akonadi-mime-20.04.2/COPYING.BSD %{buildroot}/usr/share/package-licenses/akonadi-mime/d0f83c8198fdd5464d2373015b7b64ce7cae607e
-cp %{_builddir}/akonadi-mime-20.04.2/COPYING.LIB %{buildroot}/usr/share/package-licenses/akonadi-mime/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/akonadi-mime-20.08.0/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/akonadi-mime/2a638514c87c4923c0570c55822620fad56f2a33
+cp %{_builddir}/akonadi-mime-20.08.0/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/akonadi-mime/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/akonadi-mime-20.08.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/akonadi-mime/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/akonadi-mime-20.08.0/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/akonadi-mime/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/akonadi-mime-20.08.0/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/akonadi-mime/757b86330df80f81143d5916b3e92b4bcb1b1890
+cp %{_builddir}/akonadi-mime-20.08.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/akonadi-mime/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/akonadi-mime-20.08.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/akonadi-mime/e458941548e0864907e654fa2e192844ae90fc32
 pushd clr-build
 %make_install
 popd
@@ -157,6 +161,8 @@ popd
 /usr/include/KF5/Akonadi/KMime/MessageParts
 /usr/include/KF5/Akonadi/KMime/MessageStatus
 /usr/include/KF5/Akonadi/KMime/MoveCommand
+/usr/include/KF5/Akonadi/KMime/NewMailNotifierAttribute
+/usr/include/KF5/Akonadi/KMime/Pop3ResourceAttribute
 /usr/include/KF5/Akonadi/KMime/RemoveDuplicatesJob
 /usr/include/KF5/Akonadi/KMime/SpecialMailCollections
 /usr/include/KF5/Akonadi/KMime/SpecialMailCollectionsDiscoveryJob
@@ -173,6 +179,8 @@ popd
 /usr/include/KF5/akonadi/kmime/messageparts.h
 /usr/include/KF5/akonadi/kmime/messagestatus.h
 /usr/include/KF5/akonadi/kmime/movecommand.h
+/usr/include/KF5/akonadi/kmime/newmailnotifierattribute.h
+/usr/include/KF5/akonadi/kmime/pop3resourceattribute.h
 /usr/include/KF5/akonadi/kmime/removeduplicatesjob.h
 /usr/include/KF5/akonadi/kmime/specialmailcollections.h
 /usr/include/KF5/akonadi/kmime/specialmailcollectionsdiscoveryjob.h
@@ -188,14 +196,16 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5AkonadiMime.so.5
-/usr/lib64/libKF5AkonadiMime.so.5.14.2
+/usr/lib64/libKF5AkonadiMime.so.5.15.0
 /usr/lib64/qt5/plugins/akonadi_serializer_mail.so
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/akonadi-mime/7c203dee3a03037da436df03c4b25b659c073976
-/usr/share/package-licenses/akonadi-mime/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-/usr/share/package-licenses/akonadi-mime/d0f83c8198fdd5464d2373015b7b64ce7cae607e
+/usr/share/package-licenses/akonadi-mime/20079e8f79713dce80ab09774505773c926afa2a
+/usr/share/package-licenses/akonadi-mime/2a638514c87c4923c0570c55822620fad56f2a33
+/usr/share/package-licenses/akonadi-mime/6f1f675aa5f6a2bbaa573b8343044b166be28399
+/usr/share/package-licenses/akonadi-mime/757b86330df80f81143d5916b3e92b4bcb1b1890
+/usr/share/package-licenses/akonadi-mime/e458941548e0864907e654fa2e192844ae90fc32
 
 %files locales -f libakonadi-kmime5.lang
 %defattr(-,root,root,-)
