@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : akonadi-mime
-Version  : 22.08.3
-Release  : 48
-URL      : https://download.kde.org/stable/release-service/22.08.3/src/akonadi-mime-22.08.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.08.3/src/akonadi-mime-22.08.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.08.3/src/akonadi-mime-22.08.3.tar.xz.sig
+Version  : 22.12.0
+Release  : 49
+URL      : https://download.kde.org/stable/release-service/22.12.0/src/akonadi-mime-22.12.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.12.0/src/akonadi-mime-22.12.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.12.0/src/akonadi-mime-22.12.0.tar.xz.sig
 Summary  : Libraries and daemons to implement basic email handling
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -91,15 +91,15 @@ locales components for the akonadi-mime package.
 
 
 %prep
-%setup -q -n akonadi-mime-22.08.3
-cd %{_builddir}/akonadi-mime-22.08.3
+%setup -q -n akonadi-mime-22.12.0
+cd %{_builddir}/akonadi-mime-22.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1667881183
+export SOURCE_DATE_EPOCH=1670537377
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -115,7 +115,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1667881183
+export SOURCE_DATE_EPOCH=1670537377
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/akonadi-mime
 cp %{_builddir}/akonadi-mime-%{version}/.codespellrc.license %{buildroot}/usr/share/package-licenses/akonadi-mime/c011fda7746c087a127999da1c4044854ee42238 || :
@@ -199,7 +199,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5AkonadiMime.so.5
-/usr/lib64/libKF5AkonadiMime.so.5.21.3
+/usr/lib64/libKF5AkonadiMime.so.5.22.0
 /usr/lib64/qt5/plugins/akonadi_serializer_mail.so
 
 %files license
