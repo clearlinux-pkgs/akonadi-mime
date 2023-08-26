@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : akonadi-mime
-Version  : 23.04.3
-Release  : 58
-URL      : https://download.kde.org/stable/release-service/23.04.3/src/akonadi-mime-23.04.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.04.3/src/akonadi-mime-23.04.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.04.3/src/akonadi-mime-23.04.3.tar.xz.sig
+Version  : 23.08.0
+Release  : 59
+URL      : https://download.kde.org/stable/release-service/23.08.0/src/akonadi-mime-23.08.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.08.0/src/akonadi-mime-23.08.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.08.0/src/akonadi-mime-23.08.0.tar.xz.sig
 Summary  : Libraries and daemons to implement basic email handling
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -91,15 +91,15 @@ locales components for the akonadi-mime package.
 
 
 %prep
-%setup -q -n akonadi-mime-23.04.3
-cd %{_builddir}/akonadi-mime-23.04.3
+%setup -q -n akonadi-mime-23.08.0
+cd %{_builddir}/akonadi-mime-23.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1688861901
+export SOURCE_DATE_EPOCH=1693024921
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -132,7 +132,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1688861901
+export SOURCE_DATE_EPOCH=1693024921
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/akonadi-mime
 cp %{_builddir}/akonadi-mime-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/akonadi-mime/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
@@ -175,40 +175,54 @@ popd
 %defattr(-,root,root,-)
 /usr/include/KPim5/AkonadiMime/Akonadi/AddressAttribute
 /usr/include/KPim5/AkonadiMime/Akonadi/CommandBase
+/usr/include/KPim5/AkonadiMime/Akonadi/DispatchModeAttribute
+/usr/include/KPim5/AkonadiMime/Akonadi/DispatcherInterface
+/usr/include/KPim5/AkonadiMime/Akonadi/ErrorAttribute
 /usr/include/KPim5/AkonadiMime/Akonadi/MDNStateAttribute
 /usr/include/KPim5/AkonadiMime/Akonadi/MarkAsCommand
 /usr/include/KPim5/AkonadiMime/Akonadi/MessageFlags
 /usr/include/KPim5/AkonadiMime/Akonadi/MessageFolderAttribute
 /usr/include/KPim5/AkonadiMime/Akonadi/MessageModel
 /usr/include/KPim5/AkonadiMime/Akonadi/MessageParts
+/usr/include/KPim5/AkonadiMime/Akonadi/MessageQueueJob
 /usr/include/KPim5/AkonadiMime/Akonadi/MessageStatus
 /usr/include/KPim5/AkonadiMime/Akonadi/MoveCommand
 /usr/include/KPim5/AkonadiMime/Akonadi/NewMailNotifierAttribute
 /usr/include/KPim5/AkonadiMime/Akonadi/Pop3ResourceAttribute
 /usr/include/KPim5/AkonadiMime/Akonadi/RemoveDuplicatesJob
+/usr/include/KPim5/AkonadiMime/Akonadi/SentActionAttribute
+/usr/include/KPim5/AkonadiMime/Akonadi/SentBehaviourAttribute
 /usr/include/KPim5/AkonadiMime/Akonadi/SpecialMailCollections
 /usr/include/KPim5/AkonadiMime/Akonadi/SpecialMailCollectionsDiscoveryJob
 /usr/include/KPim5/AkonadiMime/Akonadi/SpecialMailCollectionsRequestJob
 /usr/include/KPim5/AkonadiMime/Akonadi/StandardMailActionManager
+/usr/include/KPim5/AkonadiMime/Akonadi/TransportAttribute
 /usr/include/KPim5/AkonadiMime/akonadi-mime_version.h
 /usr/include/KPim5/AkonadiMime/akonadi/addressattribute.h
 /usr/include/KPim5/AkonadiMime/akonadi/akonadi-mime_export.h
 /usr/include/KPim5/AkonadiMime/akonadi/commandbase.h
+/usr/include/KPim5/AkonadiMime/akonadi/dispatcherinterface.h
+/usr/include/KPim5/AkonadiMime/akonadi/dispatchmodeattribute.h
+/usr/include/KPim5/AkonadiMime/akonadi/errorattribute.h
 /usr/include/KPim5/AkonadiMime/akonadi/markascommand.h
 /usr/include/KPim5/AkonadiMime/akonadi/mdnstateattribute.h
 /usr/include/KPim5/AkonadiMime/akonadi/messageflags.h
 /usr/include/KPim5/AkonadiMime/akonadi/messagefolderattribute.h
 /usr/include/KPim5/AkonadiMime/akonadi/messagemodel.h
 /usr/include/KPim5/AkonadiMime/akonadi/messageparts.h
+/usr/include/KPim5/AkonadiMime/akonadi/messagequeuejob.h
 /usr/include/KPim5/AkonadiMime/akonadi/messagestatus.h
 /usr/include/KPim5/AkonadiMime/akonadi/movecommand.h
 /usr/include/KPim5/AkonadiMime/akonadi/newmailnotifierattribute.h
 /usr/include/KPim5/AkonadiMime/akonadi/pop3resourceattribute.h
 /usr/include/KPim5/AkonadiMime/akonadi/removeduplicatesjob.h
+/usr/include/KPim5/AkonadiMime/akonadi/sentactionattribute.h
+/usr/include/KPim5/AkonadiMime/akonadi/sentbehaviourattribute.h
 /usr/include/KPim5/AkonadiMime/akonadi/specialmailcollections.h
 /usr/include/KPim5/AkonadiMime/akonadi/specialmailcollectionsdiscoveryjob.h
 /usr/include/KPim5/AkonadiMime/akonadi/specialmailcollectionsrequestjob.h
 /usr/include/KPim5/AkonadiMime/akonadi/standardmailactionmanager.h
+/usr/include/KPim5/AkonadiMime/akonadi/transportattribute.h
 /usr/lib64/cmake/KF5AkonadiMime/KF5AkonadiMimeConfig.cmake
 /usr/lib64/cmake/KF5AkonadiMime/KF5AkonadiMimeConfigVersion.cmake
 /usr/lib64/cmake/KF5AkonadiMime/KPim5AkonadiMimeTargets-relwithdebinfo.cmake
@@ -222,10 +236,10 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKPim5AkonadiMime.so.5.23.3
+/V3/usr/lib64/libKPim5AkonadiMime.so.5.24.0
 /V3/usr/lib64/qt5/plugins/akonadi_serializer_mail.so
 /usr/lib64/libKPim5AkonadiMime.so.5
-/usr/lib64/libKPim5AkonadiMime.so.5.23.3
+/usr/lib64/libKPim5AkonadiMime.so.5.24.0
 /usr/lib64/qt5/plugins/akonadi_serializer_mail.so
 
 %files license
